@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilitarios Informáticos - Módulo 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .slide { display: none; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; margin: 20px auto; max-width: 900px; }
+        .slide.active { display: block; }
+        .icon-huge { font-size: 3rem; color: #2c3e50; margin-bottom: 15px; }
+        .teoria-box { background-color: #e9ecef; border-left: 5px solid #2c3e50; padding: 20px; text-align: left; margin-bottom: 20px; font-size: 1.1rem;}
+        .actividad-box { border: 2px dashed #18bc9c; padding: 25px; border-radius: 10px; text-align: left; background-color: #fafffc;}
+        .opcion-btn { display: block; width: 100%; text-align: left; margin-bottom: 10px; padding: 15px; border-radius: 8px; border: 1px solid #ced4da; background-color: white; transition: all 0.2s; white-space: normal; height: auto;}
+        .opcion-btn:hover { background-color: #e8f8f5; border-color: #18bc9c; transform: translateX(5px); }
+    </style>
+</head>
+<body>
+
+<div class="container text-center mt-4">
+    
+    <!-- SLIDE 0: Título -->
+    <div class="slide animate__animated animate__fadeIn active" id="slide-0">
+        <i class="fas fa-laptop-medical icon-huge text-primary"></i>
+        <h1>Módulo 1: Conceptos y Práctica</h1>
+        <h3 class="text-secondary">Instituto Artemisa - Escuela de Enfermería[cite: 3]</h3>
+        <p class="lead mt-3">Unidades 1, 2 y 3: Entorno Digital, Procesamiento de Textos y Bases de Datos[cite: 3].</p>
+        <button class="btn btn-primary btn-lg mt-3" onclick="changeSlide(1)">Comenzar Clase</button>
+    </div>
+
+    <!-- SLIDE 1: Unidad 1 - Hardware y Software -->
+    <div class="slide animate__animated" id="slide-1">
+        <h2>1. Hardware, Software y Redes</h2>
+        <div class="teoria-box">
+            <p><strong>Hardware:</strong> Es el soporte material (monitor, teclado, CPU).</p>
+            <p><strong>Software:</strong> Son los programas (Word, Excel, sistemas médicos)[cite: 2].</p>
+            <p><strong>Redes:</strong> Permiten la circulación de la información entre equipos[cite: 2]. Una institución puede tener PC (hardware), pero sin red no puede compartir información[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-success"><i class="fas fa-tasks"></i> Ejercicio 1</h4>
+            <p>La pantalla de la computadora no enciende porque el cable está roto, pero el sistema informático del hospital funciona perfectamente en las demás máquinas. ¿Qué tipo de falla es?</p>
+            <button class="opcion-btn" onclick="evaluar(1, 1)">A) Falla de Software.</button>
+            <button class="opcion-btn" onclick="evaluar(1, 2)">B) Falla de Hardware.</button>
+            <button class="opcion-btn" onclick="evaluar(1, 3)">C) Falla de Redes.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Unidad 1 - Seguridad y HCEN -->
+    <div class="slide animate__animated" id="slide-2">
+        <h2>2. Seguridad y HCEN</h2>
+        <div class="teoria-box">
+            <p><strong>Seguridad:</strong> Protege la confidencialidad de los datos. Riesgos frecuentes: compartir contraseñas o dejar sesiones abiertas[cite: 2].</p>
+            <p><strong>HCEN:</strong> La Historia Clínica Electrónica Nacional permite el intercambio seguro de información entre prestadores, favoreciendo la continuidad asistencial en el SNIS[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-success"><i class="fas fa-shield-alt"></i> Ejercicio 2</h4>
+            <p>Un colega olvidó su clave y te pide usar tu usuario "solo por un minuto" para anotar los signos vitales de un paciente. ¿Qué debes hacer según los protocolos institucionales de seguridad?[cite: 2]</p>
+            <button class="opcion-btn" onclick="evaluar(2, 1)">A) Prestarle el usuario, la atención rápida al paciente es lo primero.</button>
+            <button class="opcion-btn" onclick="evaluar(2, 2)">B) Negarte, porque cualquier registro bajo tu usuario vulnera la trazabilidad y te hace responsable legalmente[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(2, 3)">C) Prestarle el usuario pero anotarlo en un cuaderno para recordar que fue él.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Unidad 2 - El Documento Institucional -->
+    <div class="slide animate__animated" id="slide-3">
+        <h2>3. El Documento Institucional</h2>
+        <div class="teoria-box">
+            <p><strong>Formato Técnico:</strong> Organiza el documento para que sea legible, claro y profesional (tipografía sobria, títulos, numeración)[cite: 2].</p>
+            <p><strong>Formato Estético:</strong> Sobrecarga con colores o letras decorativas. Debe evitarse en la redacción institucional[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-success"><i class="fas fa-file-word"></i> Ejercicio 3</h4>
+            <p>Debes presentar un informe a la Dirección. ¿Qué estilo aplicarás en tu procesador de textos?[cite: 3]</p>
+            <button class="opcion-btn" onclick="evaluar(3, 1)">A) Títulos en rojo, fuente cursiva decorativa y sin numeración de página para que resalte.</button>
+            <button class="opcion-btn" onclick="evaluar(3, 2)">B) Tipografía sobria (ej. Arial), márgenes ordenados, jerarquía de títulos en negrita y páginas numeradas[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Unidad 2 - Inteligencia Artificial -->
+    <div class="slide animate__animated" id="slide-4">
+        <h2>4. Uso Crítico de la IA</h2>
+        <div class="teoria-box">
+            <p>La IA puede apoyar en corrección de estilo o claridad de redacción. <strong>NO debe usarse</strong> para inventar datos ni debe recibir información clínica confidencial[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-success"><i class="fas fa-robot"></i> Ejercicio 4</h4>
+            <p>Tienes que resumir las conclusiones del mes. Ingresas a ChatGPT y le pegas la lista con los nombres, cédulas y patologías de los 50 pacientes atendidos para que te haga un resumen. ¿Es correcto?</p>
+            <button class="opcion-btn" onclick="evaluar(4, 1)">A) Sí, la IA está diseñada para procesar datos estadísticos en salud[cite: 3].</button>
+            <button class="opcion-btn" onclick="evaluar(4, 2)">B) No, ingresar datos reales identificatorios a una IA pública es una violación grave a la confidencialidad[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Unidad 3 - Estructura de la Base -->
+    <div class="slide animate__animated" id="slide-5">
+        <h2>5. La Lógica de la Base de Datos</h2>
+        <div class="teoria-box">
+            <p><strong>Registro (Fila):</strong> Es el caso individual (una persona)[cite: 2].</p>
+            <p><strong>Variable (Columna):</strong> Es una característica específica (Ej: Edad, Sexo, Patología)[cite: 2].</p>
+            <p><strong>Regla de oro:</strong> ¡Una fila por registro y una columna por variable![cite: 2]</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-success"><i class="fas fa-table"></i> Ejercicio 5</h4>
+            <p>¿Cómo debes registrar que "Ana tiene 40 años"?</p>
+            <button class="opcion-btn" onclick="evaluar(5, 1)">A) Escribir "Ana, 40 años" todo junto en una sola celda (A1).</button>
+            <button class="opcion-btn" onclick="evaluar(5, 2)">B) Usar una fila para Ana. Poner su nombre en la columna "Paciente" y el número 40 en la columna "Edad"[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Unidad 3 - Uniformidad de Datos -->
+    <div class="slide animate__animated" id="slide-6">
+        <h2>6. Uniformidad del Dato</h2>
+        <div class="teoria-box">
+            <p>La calidad de la base depende de que los datos se registren con el mismo criterio. Si no hay uniformidad, el software no podrá agrupar ni contar la información correctamente[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-success"><i class="fas fa-check-double"></i> Ejercicio 6</h4>
+            <p>Tus compañeros ingresaron el sexo de los pacientes de distintas formas: "F", "Femenino", "Mujer", "Fem". ¿Qué problema técnico genera esto en la hoja de cálculo?[cite: 3]</p>
+            <button class="opcion-btn" onclick="evaluar(6, 1)">A) Ninguno, la computadora entiende que las cuatro palabras significan lo mismo.</button>
+            <button class="opcion-btn" onclick="evaluar(6, 2)">B) El sistema detectará 4 categorías distintas, impidiendo hacer un conteo o gráfico real de la cantidad de mujeres[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="mt-4">
+        <button class="btn btn-secondary" id="btn-prev" onclick="changeSlide(-1)"><i class="fas fa-arrow-left"></i> Anterior</button>
+        <span class="mx-3 fw-bold text-secondary" id="progress">1 / 7</span>
+        <button class="btn btn-secondary" id="btn-next" onclick="changeSlide(1)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let current = 0; const total = 7;
+    function changeSlide(dir) {
+        document.getElementById(`slide-${current}`).classList.remove('active', 'animate__fadeInRight', 'animate__fadeInLeft');
+        current += dir;
+        if(current < 0) current = 0; if(current >= total) current = total - 1;
+        const anim = dir > 0 ? 'animate__fadeInRight' : 'animate__fadeInLeft';
+        document.getElementById(`slide-${current}`).classList.add('active', anim);
+        document.getElementById('progress').innerText = `${current + 1} / ${total}`;
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = current === total - 1;
+    }
+
+    function evaluar(ejercicio, opcion) {
+        let titulo, texto, icono;
+        if (ejercicio === 1) {
+            if (opcion === 2) { titulo = '¡Correcto!'; texto = 'El hardware es la parte física (cables, pantallas). Si el sistema funciona en las demás, el software está bien[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Incorrecto'; texto = 'Recuerda que el Software son los programas lógicos. Un cable roto es un problema físico (Hardware)[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 2) {
+            if (opcion === 2) { titulo = '¡Excelente!'; texto = 'La trazabilidad es clave. Prestar contraseñas vulnera la confidencialidad y la responsabilidad técnica[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Falta grave'; texto = 'Los protocolos institucionales prohíben estrictamente compartir usuarios bajo cualquier circunstancia[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 3) {
+            if (opcion === 2) { titulo = 'Correcto'; texto = 'El formato técnico debe priorizar la sobriedad, la organización y la legibilidad institucional[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Incorrecto'; texto = 'El formato estético excesivo sobrecarga el documento y le quita profesionalismo en el área de la salud[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 4) {
+            if (opcion === 2) { titulo = 'Criterio Ético'; texto = 'Entiendes los riesgos. La IA es útil, pero exponer datos sensibles es una violación a la privacidad[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Peligro de Confidencialidad'; texto = 'Nunca debes ingresar información identificatoria de pacientes a plataformas de IA externas[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 5) {
+            if (opcion === 2) { titulo = '¡Perfecto!'; texto = 'Aplicaste la regla de oro estructural: cada variable debe tener su propia columna[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Error Estructural'; texto = 'Si mezclas datos en una celda, la computadora no podrá separarlos después para aplicar filtros o estadísticas[cite: 2].'; icono = 'warning'; }
+        }
+        else if (ejercicio === 6) {
+            if (opcion === 2) { titulo = 'Excelente análisis'; texto = 'La falta de uniformidad destruye la calidad de la base. Se debe establecer una única categoría desde el inicio[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Cuidado'; texto = 'La computadora no "piensa". Si escribes la misma idea con 4 palabras diferentes, la máquina contará 4 cosas distintas[cite: 2].'; icono = 'error'; }
+        }
+        Swal.fire({ title: titulo, html: texto, icon: icono, confirmButtonColor: '#2c3e50' });
+    }
+    document.getElementById('btn-prev').disabled = true;
+</script>
+</body>
+</html>

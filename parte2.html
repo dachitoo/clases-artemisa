@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2 - Utilitarios Informáticos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .slide { display: none; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; margin: 20px auto; max-width: 1000px; }
+        .slide.active { display: block; }
+        .icon-huge { font-size: 3rem; color: #2c3e50; margin-bottom: 15px; }
+        .teoria-box { background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 25px; text-align: left; margin-bottom: 20px; font-size: 1.1rem; border-radius: 0 10px 10px 0;}
+        .ejemplo-box { background-color: #e0f2fe; border-left: 5px solid #0284c7; padding: 20px; text-align: left; margin-bottom: 20px; font-style: italic;}
+        .actividad-box { border: 2px dashed #0dcaf0; padding: 25px; border-radius: 10px; text-align: left; background-color: #f0fdfa;}
+        .opcion-btn { display: block; width: 100%; text-align: left; margin-bottom: 10px; padding: 15px; border-radius: 8px; border: 1px solid #ced4da; background-color: white; transition: all 0.2s; white-space: normal; height: auto;}
+        .opcion-btn:hover { background-color: #f8f9fa; border-color: #0dcaf0; transform: translateX(5px); }
+        .btn-interactivo { font-weight: bold; padding: 12px 24px; border-radius: 50px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container text-center mt-4">
+    
+    <!-- SLIDE 0: Título -->
+    <div class="slide animate__animated animate__fadeIn active" id="slide-0">
+        <i class="fas fa-chart-line icon-huge text-info"></i>
+        <h1>Módulo 2: Análisis, Nube y Presentación</h1>
+        <h3 class="text-secondary">Instituto Artemisa - Escuela de Enfermería[cite: 3]</h3>
+        <p class="lead mt-3">Unidades 4 a 7: Tomando decisiones con la información[cite: 3].</p>
+        <p>Lee detenidamente la teoría, observa el ejemplo del mundo real y resuelve los ejercicios de evaluación.</p>
+        <button class="btn btn-info btn-interactivo text-white btn-lg mt-3" onclick="changeSlide(1)">Iniciar Módulo 2</button>
+    </div>
+
+    <!-- SLIDE 1: Unidad 4 - Filtros y Validación -->
+    <div class="slide animate__animated" id="slide-1">
+        <h2>1. Filtrar la Base y Validación</h2>
+        
+        <div class="teoria-box">
+            <h5 class="text-warning"><i class="fas fa-filter"></i> Teoría Institucional</h5>
+            <p><strong>Ordenar vs Filtrar:</strong> Ordenar organiza la base completa. Filtrar oculta temporalmente los registros que no sirven, permitiendo interrogar la base (Ej. ¿Cuántas mujeres tienen estudios pendientes?)[cite: 2].</p>
+            <p><strong>Validación de datos:</strong> Establece reglas (listas cerradas) sobre qué puede ingresarse en una celda, previniendo errores de tipeo y asegurando la uniformidad[cite: 2].</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-hospital"></i> En el Mundo Real:</strong> La jefa de enfermería necesita urgentemente saber cuántos niños menores de 5 años vinieron por asma este mes. Si no sabes aplicar Filtros Combinados (Edad < 5 y Patología = Asma), tendrás que contar uno por uno a ojo, arriesgándote a cometer errores graves.
+        </div>
+        
+        <div class="actividad-box">
+            <button class="btn btn-info btn-interactivo text-white mb-3" onclick="mostrarInfoRapida(3)">Ver Resumen: Tipos de Gráficos</button>
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Evaluación de Interrogación</h5>
+            <p>Para aplicar el criterio preventivo, te piden localizar en Excel a todos los hombres que no se han hecho el control de próstata. ¿Cuál es el procedimiento técnico correcto?[cite: 2]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(6, 1)">A) Borrar de la base a todas las mujeres y a los hombres que sí se lo hicieron, dejando solo a los que faltan.</button>
+            <button class="opcion-btn" onclick="evaluar(6, 2)">B) Aplicar un Filtro en la variable "Sexo" (mostrando solo Hombres) y otro Filtro en la variable "Control Preventivo" (mostrando solo los Pendientes)[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(6, 3)">C) Ordenar la columna de Sexo alfabéticamente.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Unidad 5 - Formularios Digitales -->
+    <div class="slide animate__animated" id="slide-2">
+        <h2>2. Formularios Digitales de Recolección</h2>
+        
+        <div class="teoria-box">
+            <h5 class="text-warning"><i class="fas fa-clipboard-list"></i> Teoría Institucional</h5>
+            <p>Un formulario (Google Forms) no es una simple encuesta, es un <strong>instrumento técnico de recolección de datos</strong>[cite: 2].</p>
+            <p>Debe existir relación directa: <strong>cada pregunta relevante del formulario debe corresponder a una variable (columna) concreta de la base de datos principal en Excel</strong>[cite: 2].</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-exclamation-triangle"></i> El error clásico:</strong> Un Auxiliar crea un formulario y pregunta "¿Cómo se ha sentido últimamente?". Un paciente responde "Bien", otro responde "Me duele la rodilla" y otro responde "Normal". Cuando el Auxiliar intenta llevar esas respuestas al Excel para hacer una estadística, descubre que esos datos no se pueden tabular.
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Evaluación de Diseño</h5>
+            <p>¿Qué característica debe tener un buen formulario digital diseñado por un AESRM?[cite: 2]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(7, 1)">A) Debe tener preguntas abiertas y ambiguas para que el paciente se exprese con libertad.</button>
+            <button class="opcion-btn" onclick="evaluar(7, 2)">B) Debe contener preguntas claras y opciones cerradas (ej. Sí/No, listas desplegables) para que las respuestas encajen perfectamente en la estructura de la base de datos[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(7, 3)">C) Debe tener colores llamativos y formato estético complejo.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Unidad 5 - Nube y Respaldos -->
+    <div class="slide animate__animated" id="slide-3">
+        <h2>3. Almacenamiento Seguro en la Nube</h2>
+        
+        <div class="teoria-box">
+            <h5 class="text-warning"><i class="fas fa-cloud-upload-alt"></i> Teoría Institucional</h5>
+            <p>El almacenamiento en la nube (Drive/OneDrive) guarda archivos en servidores remotos accesibles por internet, protegiendo contra la pérdida física de equipos[cite: 2, 3].</p>
+            <p><strong>Guardar no es respaldar.</strong> En la nube se deben mantener criterios de organización (carpetas) y permisos de seguridad para proteger los datos de accesos no autorizados[cite: 2].</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-folder-open"></i> En el Mundo Real:</strong> Subes el Excel con los pacientes de psiquiatría a tu Google Drive, pero configuras el link como "Público para cualquiera en internet". Un buscador indexa tu archivo y miles de personas acceden al diagnóstico confidencial de tus pacientes.
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Evaluación de Respaldo</h5>
+            <p>El disco duro de la recepción se quemó por un rayo y se perdieron las planillas locales. Por suerte, usabas la nube. ¿Qué debes configurar correctamente en la nube para mantener la seguridad clínica?[cite: 2]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(8, 1)">A) Los permisos de acceso (Restringido), asegurando que solo el personal autorizado institucionalmente pueda ver o editar la base[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(8, 2)">B) Los colores de las carpetas para que se vean más estéticas.</button>
+            <button class="opcion-btn" onclick="evaluar(8, 3)">C) El tamaño de la letra del archivo.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Unidad 6 - Análisis e Interpretación -->
+    <div class="slide animate__animated" id="slide-4">
+        <h2>4. Estadística y GeoSalud</h2>
+        
+        <div class="teoria-box">
+            <h5 class="text-warning"><i class="fas fa-calculator"></i> Teoría Institucional</h5>
+            <p>Software como Jamovi o PSPP arroja resultados brutos (tablas, promedios)[cite: 3]. <strong>La salida estadística no habla sola; necesita interpretación humana y redacción institucional</strong>[cite: 2].</p>
+            <p><strong>GeoSalud</strong> permite la lectura territorial (espacial) de la información. El dato se lee por su ubicación (ej. distribución de pacientes por barrio)[cite: 2, 3].</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-map-pin"></i> En el Mundo Real:</strong> Tienes 30 casos de dengue. Si solo miras los números, no sabes qué hacer. Si los llevas a un mapa (GeoSalud), descubres que 25 casos están agrupados en dos manzanas del mismo barrio, permitiendo enviar equipos de fumigación exactamente a ese lugar.
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Evaluación de Traducción</h5>
+            <p>Ingresas los tiempos de espera a Jamovi y te devuelve: "Media = 25". Como profesional AESRM, ¿cómo lo escribes en tu informe de Word?[cite: 2]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(9, 1)">A) Pego un pantallazo del programa y escribo abajo "Media = 25".</button>
+            <button class="opcion-btn" onclick="evaluar(9, 2)">B) Redacto: "El tiempo promedio de espera de los usuarios en la policlínica fue de 25 minutos"[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(9, 3)">C) Lo borro, porque los números brutos no le interesan a la dirección.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Unidad 7 - El Informe Ejecutivo -->
+    <div class="slide animate__animated" id="slide-5">
+        <h2>5. Cierre: Coherencia y Presentación</h2>
+        
+        <div class="teoria-box">
+            <h5 class="text-warning"><i class="fas fa-project-diagram"></i> Teoría Institucional</h5>
+            <p><strong>Coherencia interna:</strong> Un proyecto no es una suma de partes aisladas. Si tu objetivo es analizar patologías crónicas, el formulario, los filtros de Excel y los gráficos deben apuntar a eso[cite: 2].</p>
+            <p><strong>Presentación a Superiores:</strong> Una presentación de PowerPoint a la Dirección NO debe repetir todo el informe de 20 páginas, sino <strong>sintetizar</strong>: objetivo, población, el gráfico clave y el hallazgo principal[cite: 2].</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-user-tie"></i> En el Mundo Real:</strong> Tienes 5 minutos frente al Director del Hospital. Si le pones una diapositiva llena de texto pequeño (copiada de tu Word), dejará de escucharte. Si le pones un gráfico circular gigante demostrando que el 80% de los infartos ocurren en invierno, tomará decisiones inmediatas.
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Evaluación Final Integrador</h5>
+            <p>Si durante el curso presentas un informe excelente sobre enfermedades de invierno, pero los datos provienen de un formulario donde preguntaste sobre el color de pelo y la mascota del paciente... ¿qué falló?[cite: 2]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(10, 1)">A) Falló el procesador de texto.</button>
+            <button class="opcion-btn" onclick="evaluar(10, 2)">B) Falló la coherencia interna del proyecto. El instrumento de recolección (formulario) no tiene relación lógica con los resultados y análisis presentados en el informe[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(10, 3)">C) No falló nada, mientras el gráfico sea de barras todo está bien.</button>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="mt-4 pb-5">
+        <button class="btn btn-secondary btn-interactivo" id="btn-prev" onclick="changeSlide(-1)"><i class="fas fa-arrow-left"></i> Anterior</button>
+        <span class="mx-4 fw-bold text-secondary fs-5" id="progress">1 / 5</span>
+        <button class="btn btn-secondary btn-interactivo" id="btn-next" onclick="changeSlide(1)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let current = 0; const total = 5;
+    function changeSlide(dir) {
+        document.getElementById(`slide-${current}`).classList.remove('active', 'animate__fadeInRight', 'animate__fadeInLeft');
+        current += dir;
+        if(current < 0) current = 0; if(current >= total) current = total - 1;
+        const anim = dir > 0 ? 'animate__fadeInRight' : 'animate__fadeInLeft';
+        document.getElementById(`slide-${current}`).classList.add('active', anim);
+        document.getElementById('progress').innerText = `${current + 1} / ${total}`;
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = current === total - 1;
+    }
+
+    function mostrarInfoRapida(tipo) {
+        if (tipo === 3) {
+            Swal.fire({title: 'Uso de Gráficos', html: '<ul class="text-start"><li><b>Torta / Circular:</b> Para porcentajes del total (Ej. Cuántos Hombres vs Mujeres).</li><li><b>Barras / Columnas:</b> Para comparar cantidades entre grupos (Ej. Consultas por Barrio).</li><li><b>Líneas:</b> Para ver la evolución en el tiempo (Ej. Consultas mes a mes).</li></ul>', icon: 'info', confirmButtonColor: '#0dcaf0'});
+        }
+    }
+
+    function evaluar(ejercicio, opcion) {
+        let titulo, texto, icono;
+        if (ejercicio === 6) {
+            if (opcion === 2) { titulo = '¡Técnica Correcta!'; texto = 'Filtrar oculta temporalmente a los demás pacientes y te deja exactamente con el grupo objetivo sin dañar la base original[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Error Crítico'; texto = 'Borrar datos (Opción A) destruye el archivo histórico. Ordenar (Opción C) te obliga a contar a mano y genera errores visuales[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 7) {
+            if (opcion === 2) { titulo = 'Diseño Institucional'; texto = 'Perfecto. Las opciones cerradas garantizan que la información sea uniforme y lista para ser analizada en la hoja de cálculo[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Falla de Recolección'; texto = 'Las preguntas abiertas generan datos caóticos que no podrás tabular ni graficar estadísticamente[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 8) {
+            if (opcion === 1) { titulo = 'Seguridad en la Nube'; texto = 'Configurar los permisos garantiza la confidencialidad, evitando que personas externas accedan a datos clínicos sensibles[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Cuidado'; texto = 'Las opciones visuales (colores, letras) no protegen el acceso. Guardar en internet exige estricto control de permisos[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 9) {
+            if (opcion === 2) { titulo = '¡Excelente Traducción!'; texto = 'Ese es tu trabajo como profesional: tomar el resultado bruto de la máquina y redactarlo para que el equipo de salud lo entienda y tome decisiones[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Falta Análisis'; texto = 'Pegar resultados crudos sin redacción no demuestra comprensión del dato. El número debe ser interpretado en su contexto sanitario[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 10) {
+            if (opcion === 2) { titulo = 'Visión Integradora'; texto = 'Has detectado la falta de coherencia. Todas las piezas del proyecto (formulario, base, análisis y conclusión) deben estar conectadas lógicamente[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Error Analítico'; texto = 'La coherencia interna es la base de un trabajo profesional. No sirve tener gráficos impecables si los datos provienen de un instrumento de recolección equivocado[cite: 2].'; icono = 'warning'; }
+        }
+        Swal.fire({ title: titulo, html: texto, icon: icono, confirmButtonColor: '#0dcaf0' });
+    }
+    document.getElementById('btn-prev').disabled = true;
+</script>
+</body>
+</html>

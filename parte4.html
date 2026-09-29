@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilitarios Informáticos - Módulo 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        .slide { display: none; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; margin: 20px auto; max-width: 900px; }
+        .slide.active { display: block; }
+        .icon-huge { font-size: 3rem; color: #2c3e50; margin-bottom: 15px; }
+        .teoria-box { background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 20px; text-align: left; margin-bottom: 20px; font-size: 1.1rem;}
+        .actividad-box { border: 2px solid #0dcaf0; padding: 25px; border-radius: 10px; text-align: left; background-color: #f0fdfa;}
+        .opcion-btn { display: block; width: 100%; text-align: left; margin-bottom: 10px; padding: 15px; border-radius: 8px; border: 1px solid #ced4da; background-color: white; transition: all 0.2s; white-space: normal; height: auto;}
+        .opcion-btn:hover { background-color: #e0f2fe; border-color: #0284c7; transform: translateX(5px); }
+    </style>
+</head>
+<body>
+
+<div class="container text-center mt-4">
+    
+    <!-- SLIDE 0 -->
+    <div class="slide animate__animated animate__fadeIn active" id="slide-0">
+        <i class="fas fa-chart-bar icon-huge text-primary"></i>
+        <h1>Módulo 2: Análisis y Gestión</h1>
+        <h3 class="text-secondary">Instituto Artemisa - Escuela de Enfermería[cite: 3]</h3>
+        <p class="lead mt-3">Unidades 4 a 7: Bases, Nube, Estadística y Proyecto Final[cite: 3].</p>
+        <button class="btn btn-primary btn-lg mt-3" onclick="changeSlide(1)">Comenzar Clase</button>
+    </div>
+
+    <!-- SLIDE 1: Unidad 4 - Ordenar vs Filtrar -->
+    <div class="slide animate__animated" id="slide-1">
+        <h2>1. Ordenar vs Filtrar</h2>
+        <div class="teoria-box">
+            <p><strong>Ordenar:</strong> Organiza la base completa (Ej. Alfabéticamente)[cite: 2].</p>
+            <p><strong>Filtrar:</strong> Muestra SOLO los registros que cumplen una condición, ocultando temporalmente el resto[cite: 2]. Sirve para interrogar la base y responder preguntas clínicas.</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-filter"></i> Ejercicio 1</h4>
+            <p>El Ministerio solicita la lista urgente de los hombres con seguimiento urológico pendiente. ¿Qué herramienta usas?[cite: 2]</p>
+            <button class="opcion-btn" onclick="evaluar(1, 1)">A) Ordenar la base por sexo y buscar manualmente uno por uno.</button>
+            <button class="opcion-btn" onclick="evaluar(1, 2)">B) Aplicar Filtro en columna "Sexo" (M) y Filtro en "Urología" (Pendiente)[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Unidad 4 - Validación y Gráficos -->
+    <div class="slide animate__animated" id="slide-2">
+        <h2>2. Validación de Datos y Gráficos</h2>
+        <div class="teoria-box">
+            <p><strong>Validación:</strong> Establece reglas previas para evitar errores (Ej. Una lista desplegable que solo acepta "Sí" o "No")[cite: 2].</p>
+            <p><strong>Gráficos:</strong> Resumen información (Barras, Tortas). Nunca reemplazan el análisis humano[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-chart-pie"></i> Ejercicio 2</h4>
+            <p>En la columna "Estudios Pendientes", aplicas Validación de Datos. ¿Para qué sirve esto?[cite: 3]</p>
+            <button class="opcion-btn" onclick="evaluar(2, 1)">A) Para que los pacientes no mientan sobre su salud.</button>
+            <button class="opcion-btn" onclick="evaluar(2, 2)">B) Para prevenir errores de tipeo y obligar a que solo se escriba lo permitido (Ej. Sí/No), protegiendo la calidad de la base[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Unidad 5 - Formularios Digitales -->
+    <div class="slide animate__animated" id="slide-3">
+        <h2>3. Formularios Digitales</h2>
+        <div class="teoria-box">
+            <p>El formulario (Google Forms) es un <strong>instrumento técnico de recolección</strong>. Cada pregunta relevante del formulario debe corresponder a una variable (columna) concreta de la base de datos[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-clipboard-list"></i> Ejercicio 3</h4>
+            <p>Quieres que los pacientes actualicen sus datos por celular. ¿Es correcto poner preguntas abiertas como "Cuéntanos sobre tu vida"?</p>
+            <button class="opcion-btn" onclick="evaluar(3, 1)">A) No. Un buen formulario requiere opciones cerradas que coincidan con las variables (columnas) que ya tenemos en Excel[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(3, 2)">B) Sí, las respuestas libres siempre son mejores para las estadísticas médicas.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Unidad 5 - La Nube y Respaldos -->
+    <div class="slide animate__animated" id="slide-4">
+        <h2>4. Almacenamiento en la Nube</h2>
+        <div class="teoria-box">
+            <p>La Nube (Drive) permite guardar en servidores de internet. Protege frente a pérdida física (rotura de PC) y facilita el trabajo colaborativo[cite: 2].</p>
+            <p><strong>¡Atención!</strong> Guardar no es respaldar. Debe haber control de permisos (quién ve qué)[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-cloud"></i> Ejercicio 4</h4>
+            <p>Si guardas el archivo de Excel con datos de pacientes sensibles en un Google Drive, ¿cómo deben ser los permisos?</p>
+            <button class="opcion-btn" onclick="evaluar(4, 1)">A) "Público para todos en internet", así es más fácil compartirlo.</button>
+            <button class="opcion-btn" onclick="evaluar(4, 2)">B) "Restringido", compartiendo acceso únicamente con los docentes o personal autorizado de la institución[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Unidad 6 - Estadística Básica -->
+    <div class="slide animate__animated" id="slide-5">
+        <h2>5. Estadística: Traducción de Salidas</h2>
+        <div class="teoria-box">
+            <p>Software como Jamovi o PSPP arroja resultados brutos (tablas, medias)[cite: 3]. La salida estadística no habla sola; necesita interpretación humana y redacción institucional[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-calculator"></i> Ejercicio 5</h4>
+            <p>El programa te arroja: <em>Variable = Edad, N = 100, Media = 45</em>. Como Auxiliar (AESRM), ¿cómo redactas esto en tu informe?[cite: 2]</p>
+            <button class="opcion-btn" onclick="evaluar(5, 1)">A) Escribes literalmente "Media = 45" debajo del título.</button>
+            <button class="opcion-btn" onclick="evaluar(5, 2)">B) Traduces: "El promedio de edad de los pacientes atendidos es de 45 años"[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Unidad 6 - GeoSalud -->
+    <div class="slide animate__animated" id="slide-6">
+        <h2>6. La Dimensión Territorial</h2>
+        <div class="teoria-box">
+            <p><strong>GeoSalud:</strong> Permite la lectura territorial de la información. La información no solo se lee por cantidad, también por ubicación (Ej. Casos por barrio)[cite: 2, 3].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-map-marked-alt"></i> Ejercicio 6</h4>
+            <p>Tienes 50 casos de dengue en la ciudad. ¿Qué utilidad tiene GeoSalud aquí?[cite: 3]</p>
+            <button class="opcion-btn" onclick="evaluar(6, 1)">A) Ubicar espacialmente los casos en el mapa para ver qué barrios están más afectados y dirigir las campañas preventivas[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(6, 2)">B) Solo sirve para calcular la edad de los infectados.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Unidad 7 - Coherencia y Presentación -->
+    <div class="slide animate__animated" id="slide-7">
+        <h2>7. El Proyecto Integrador</h2>
+        <div class="teoria-box">
+            <p><strong>Coherencia interna:</strong> El objetivo, el formulario, los filtros y las conclusiones deben estar alineados[cite: 2].</p>
+            <p><strong>Presentación a Superiores:</strong> Una exposición ejecutiva (PowerPoint) <em>no repite</em> todo el informe, sino que <em>sintetiza</em> el hallazgo clave y el gráfico principal[cite: 2].</p>
+        </div>
+        <div class="actividad-box">
+            <h4 class="text-info"><i class="fas fa-project-diagram"></i> Ejercicio 7</h4>
+            <p>Tienes 5 minutos para exponer tu informe final ante el Director. ¿Cómo preparas tus diapositivas?</p>
+            <button class="opcion-btn" onclick="evaluar(7, 1)">A) Pego el texto completo de las 15 páginas del informe para que lean todo.</button>
+            <button class="opcion-btn" onclick="evaluar(7, 2)">B) Sintetizo el objetivo, muestro el gráfico principal de Excel y explico el hallazgo más importante[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="mt-4">
+        <button class="btn btn-secondary" id="btn-prev" onclick="changeSlide(-1)"><i class="fas fa-arrow-left"></i> Anterior</button>
+        <span class="mx-3 fw-bold text-secondary" id="progress">1 / 8</span>
+        <button class="btn btn-secondary" id="btn-next" onclick="changeSlide(1)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let current = 0; const total = 8;
+    function changeSlide(dir) {
+        document.getElementById(`slide-${current}`).classList.remove('active', 'animate__fadeInRight', 'animate__fadeInLeft');
+        current += dir;
+        if(current < 0) current = 0; if(current >= total) current = total - 1;
+        const anim = dir > 0 ? 'animate__fadeInRight' : 'animate__fadeInLeft';
+        document.getElementById(`slide-${current}`).classList.add('active', anim);
+        document.getElementById('progress').innerText = `${current + 1} / ${total}`;
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = current === total - 1;
+    }
+
+    function evaluar(ejercicio, opcion) {
+        let titulo, texto, icono;
+        if (ejercicio === 1) {
+            if (opcion === 2) { titulo = '¡Correcto!'; texto = 'Filtrar oculta temporalmente lo que no necesitamos y nos da la respuesta inmediata, sin alterar la base original[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Pérdida de tiempo'; texto = 'Ordenar agrupa, pero buscar a mano genera errores humanos. Siempre usa Filtros para interrogar la base[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 2) {
+            if (opcion === 2) { titulo = 'Calidad Asegurada'; texto = 'Validar previene errores de escritura desde el origen, haciendo la base mucho más confiable[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Incorrecto'; texto = 'La validación no detecta mentiras, detecta formatos incorrectos (Ej. poner un texto donde va un número)[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 3) {
+            if (opcion === 1) { titulo = 'Buen Diseño'; texto = 'Un formulario es un instrumento técnico. Las preguntas deben ser cerradas y coincidir con tus columnas de Excel[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Error Analítico'; texto = 'Las preguntas abiertas generan desorden. No podrás tabular esos textos libres en tu base de datos estadísticos[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 4) {
+            if (opcion === 2) { titulo = 'Confidencialidad a Salvo'; texto = 'En salud, los datos nunca deben ser públicos. Controlar los permisos es vital para la seguridad[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Riesgo Legal'; texto = 'Publicar datos de salud en internet viola todas las normas de privacidad institucional[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 5) {
+            if (opcion === 2) { titulo = '¡Traducción Perfecta!'; texto = 'El Auxiliar debe transformar los números brutos en frases comprensibles e institucionales[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Robotización'; texto = 'Pegar resultados crudos sin redacción técnica no aporta valor al análisis institucional[cite: 2].'; icono = 'warning'; }
+        }
+        else if (ejercicio === 6) {
+            if (opcion === 1) { titulo = 'Visión Territorial'; texto = 'Exacto. Entender dónde ocurren los eventos de salud es vital para la gestión institucional[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Visión Limitada'; texto = 'GeoSalud trata sobre la ubicación territorial y mapas, no sobre cálculos estadísticos básicos[cite: 2, 3].'; icono = 'error'; }
+        }
+        else if (ejercicio === 7) {
+            if (opcion === 2) { titulo = 'Presentación Ejecutiva'; texto = 'Sintetizar demuestra que dominas el tema. La dirección necesita respuestas visuales (gráficos), no leer párrafos enormes[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Exceso de Texto'; texto = 'Un PowerPoint lleno de texto es aburrido e ineficiente. El informe completo ya lo entregaste en Word; la presentación es un resumen[cite: 2].'; icono = 'error'; }
+        }
+        Swal.fire({ title: titulo, html: texto, icon: icono, confirmButtonColor: '#2c3e50' });
+    }
+    document.getElementById('btn-prev').disabled = true;
+</script>
+</body>
+</html>
