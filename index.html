@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilitarios Informáticos - Instituto Artemisa</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        .presentation-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .slide {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 900px;
+            text-align: center;
+        }
+        .slide.active {
+            display: block;
+        }
+        .icon-huge {
+            font-size: 5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .btn-interactive {
+            background-color: #18bc9c;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+        .btn-interactive:hover {
+            transform: scale(1.05);
+            background-color: #128f76;
+            color: white;
+        }
+        .controls {
+            margin-top: 30px;
+        }
+        .progress-indicator {
+            font-weight: bold;
+            color: #7f8c8d;
+            margin: 0 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .highlight-text {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container presentation-container">
+
+    <!-- SLIDE 1: Bienvenida -->
+    <div class="slide animate__animated animate__fadeIn active" id="slide-0">
+        <i class="fas fa-hospital-user icon-huge"></i>
+        <h1>Instituto Artemisa</h1>
+        <h2>Escuela de Enfermería</h2>
+        <p class="lead mt-4">Unidad III: Introducción a Uso de Utilitarios de Computación[cite: 3]</p>
+        <p>Curso: Auxiliar de Estadísticas de Salud y Registros Médicos (AESRM)</p>
+        <hr>
+        <p><em>¿Listos para dar el salto del celular a la computadora?</em></p>
+    </div>
+
+    <!-- SLIDE 2: Entorno Digital y Hardware/Software -->
+    <div class="slide animate__animated" id="slide-1">
+        <i class="fas fa-desktop icon-huge"></i>
+        <h2>El Entorno Digital en Salud</h2>
+        <p class="lead">Antes de usar programas, debemos conocer nuestras herramientas.</p>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <i class="fas fa-keyboard fa-3x mb-2 text-primary"></i>
+                <h4>Hardware</h4>
+                <p>Lo que podemos tocar: Monitor, teclado, CPU, ratón.</p>
+            </div>
+            <div class="col-md-6">
+                <i class="fas fa-file-code fa-3x mb-2 text-success"></i>
+                <h4>Software</h4>
+                <p>Los programas internos: Word, Excel, Sistemas médicos.</p>
+            </div>
+        </div>
+        <button class="btn btn-interactive mt-3" onclick="mostrarEjemploHardware()">¡Haz el test rápido!</button>
+    </div>
+
+    <!-- SLIDE 3: Seguridad y HCEN -->
+    <div class="slide animate__animated" id="slide-2">
+        <i class="fas fa-user-shield icon-huge text-warning"></i>
+        <h2>Seguridad y Confidencialidad</h2>
+        <p class="lead">El dato sanitario es privado y le pertenece al paciente.</p>
+        <ul class="text-start fs-5 d-inline-block">
+            <li><i class="fas fa-check-circle text-success"></i> Uso de contraseñas seguras y personales[cite: 2].</li>
+            <li><i class="fas fa-times-circle text-danger"></i> Nunca dejar sesiones abiertas[cite: 2].</li>
+            <li><i class="fas fa-file-medical text-primary"></i> <strong>HCEN:</strong> Historia Clínica Electrónica Nacional. Permite la continuidad asistencial en todo Uruguay[cite: 2].</li>
+        </ul>
+        <br>
+        <button class="btn btn-interactive mt-3 bg-danger" onclick="mostrarAlertaSeguridad()">Ver un caso de riesgo</button>
+    </div>
+
+    <!-- SLIDE 4: Procesamiento de Textos -->
+    <div class="slide animate__animated" id="slide-3">
+        <i class="fas fa-file-word icon-huge text-primary"></i>
+        <h2>Procesamiento de Textos (Word / Google Docs)</h2>
+        <p class="lead">Creando documentos institucionales[cite: 3].</p>
+        <p>Un documento de salud no debe ser un carnaval de colores. Aquí aprendemos la diferencia entre el <strong>formato estético</strong> (decorativo) y el <strong>formato técnico</strong> (sobrio, claro y organizado)[cite: 2].</p>
+        <ul class="text-start fs-5 d-inline-block">
+            <li>Márgenes, títulos y numeración de páginas[cite: 2].</li>
+            <li>Uso correcto de plantillas médicas y encabezados[cite: 3].</li>
+        </ul>
+    </div>
+
+    <!-- SLIDE 5: Bases de Datos (Excel) -->
+    <div class="slide animate__animated" id="slide-4">
+        <i class="fas fa-file-excel icon-huge text-success"></i>
+        <h2>Manejo de Datos (Excel / Google Sheets)</h2>
+        <p class="lead">El corazón de las estadísticas en salud[cite: 3].</p>
+        <div class="alert alert-info fs-5">
+            <strong>La Regla de Oro:</strong> ¡Una fila por paciente (registro), y una columna por característica (variable)![cite: 2]
+        </div>
+        <p>Aprenderemos a usar tablas, aplicar filtros (ej. buscar mujeres mayores de 40 años) y usar fórmulas básicas para validación de datos[cite: 2, 3].</p>
+        <button class="btn btn-interactive" onclick="mostrarPreguntaExcel()">Adivinanza de Excel</button>
+    </div>
+
+    <!-- SLIDE 6: Gráficos y Nube -->
+    <div class="slide animate__animated" id="slide-5">
+        <i class="fas fa-cloud-upload-alt icon-huge text-info"></i>
+        <h2>Formularios, Gráficos y La Nube</h2>
+        <p class="lead">Recolectar, visualizar y guardar.</p>
+        <div class="row text-start mt-3">
+            <div class="col-md-4 text-center">
+                <i class="fas fa-chart-pie fa-2x mb-2"></i>
+                <p><strong>Gráficos:</strong> Barras, líneas y tortas para mostrar la información a nuestros superiores[cite: 3].</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="fas fa-list-alt fa-2x mb-2"></i>
+                <p><strong>Formularios:</strong> Google Forms para recolectar datos de usuarios[cite: 3].</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="fas fa-cloud fa-2x mb-2"></i>
+                <p><strong>La Nube:</strong> Guardar todo en internet para no perder los datos del centro de salud[cite: 3].</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SLIDE 7: Estadística y Cierre -->
+    <div class="slide animate__animated" id="slide-6">
+        <i class="fas fa-project-diagram icon-huge text-secondary"></i>
+        <h2>El Proyecto Final Integrador</h2>
+        <p class="lead">Uniendo todas las piezas del rompecabezas.</p>
+        <p>Cerraremos usando herramientas estadísticas (como Jamovi) para calcular porcentajes[cite: 3] y utilizaremos un sistema de información territorial introductorio (GeoSalud)[cite: 2].</p>
+        <p class="highlight-text fs-4">Objetivo: ¡Presentar el reporte completo de un Centro de Salud como verdaderos profesionales![cite: 2]</p>
+        <button class="btn btn-success btn-lg mt-3" onclick="finalizarPresentacion()"><i class="fas fa-flag-checkered"></i> ¡Comencemos!</button>
+    </div>
+
+    <!-- Controles de navegación -->
+    <div class="text-center controls">
+        <button class="btn btn-secondary rounded-circle p-3 mx-2" id="btn-prev" onclick="changeSlide(-1)">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <span class="progress-indicator" id="progress-text">1 / 7</span>
+        <button class="btn btn-secondary rounded-circle p-3 mx-2" id="btn-next" onclick="changeSlide(1)">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+</div>
+
+<!-- Scripts (Bootstrap, SweetAlert2, Funciones Personalizadas) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    let currentSlide = 0;
+    const totalSlides = 7;
+
+    function changeSlide(direction) {
+        // Ocultar slide actual
+        document.getElementById(`slide-${currentSlide}`).classList.remove('active', 'animate__fadeInRight', 'animate__fadeInLeft');
+        
+        // Calcular nuevo slide
+        currentSlide = currentSlide + direction;
+        
+        // Limites
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+
+        // Mostrar nuevo slide con animación
+        const animClass = direction > 0 ? 'animate__fadeInRight' : 'animate__fadeInLeft';
+        const newSlide = document.getElementById(`slide-${currentSlide}`);
+        newSlide.classList.add('active', animClass);
+        
+        // Actualizar texto
+        document.getElementById('progress-text').innerText = `${currentSlide + 1} / ${totalSlides}`;
+        
+        // Botones estado
+        document.getElementById('btn-prev').disabled = currentSlide === 0;
+        document.getElementById('btn-next').disabled = currentSlide === totalSlides - 1;
+    }
+
+    // Funciones Interactivas con SweetAlert2
+    function mostrarEjemploHardware() {
+        Swal.fire({
+            title: '¿Qué es un Hardware?',
+            text: 'Imagina un restaurante. El Hardware es el edificio, las mesas y la cocina. El Software son los cocineros y las recetas. ¡Necesitamos ambos para trabajar!',
+            icon: 'info',
+            confirmButtonText: '¡Entendido!',
+            confirmButtonColor: '#18bc9c'
+        });
+    }
+
+    function mostrarAlertaSeguridad() {
+        Swal.fire({
+            title: 'Riesgo de Confidencialidad',
+            text: 'Un compañero de enfermería olvidó su contraseña y te pide la tuya prestada "solo por un minuto" para registrar a un paciente. ¿Qué debes hacer?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'No dársela',
+            cancelButtonText: 'Prestársela',
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('¡Correcto!', 'Tu usuario es tu firma digital. Prestarlo es un riesgo legal y compromete la confidencialidad[cite: 2].', 'success');
+            } else {
+                Swal.fire('¡Cuidado!', 'En el sistema de salud uruguayo, las acciones realizadas con tu usuario son de tu responsabilidad legal[cite: 2]. Nunca la compartas.', 'error');
+            }
+        });
+    }
+
+    function mostrarPreguntaExcel() {
+        Swal.fire({
+            title: 'Desafío Excel',
+            text: 'Si quiero registrar la Edad, el Peso y el Barrio de Ana Pérez, ¿cómo lo organizo en la tabla?',
+            icon: 'question',
+            input: 'radio',
+            inputOptions: {
+                'error': 'Todo junto en un solo cuadradito (celda).',
+                'correct': 'Ana va en una fila, y cada dato en una columna distinta.'
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡Debes elegir una opción!';
+                }
+            },
+            confirmButtonText: 'Responder',
+            confirmButtonColor: '#18bc9c'
+        }).then((result) => {
+            if (result.value === 'correct') {
+                Swal.fire('¡Excelente!', 'Esa es la regla de oro: Una fila por registro, una columna por variable[cite: 2].', 'success');
+            } else if (result.value === 'error') {
+                Swal.fire('Ups...', 'Si pones todo junto, la computadora no podrá separar los datos luego para hacer gráficos[cite: 2].', 'info');
+            }
+        });
+    }
+
+    function finalizarPresentacion() {
+        Swal.fire({
+            title: '¡Todo listo!',
+            text: 'Están a punto de convertirse en Auxiliares expertos en manejo de información digital.',
+            icon: 'success',
+            confirmButtonText: 'Empezar la clase',
+            confirmButtonColor: '#2c3e50'
+        });
+    }
+
+    // Inicializar botones en carga
+    document.getElementById('btn-prev').disabled = true;
+</script>
+
+</body>
+</html>
