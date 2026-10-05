@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a Jamovi - AESRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body { background-color: #f3f0ff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .slide { display: none; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; margin: 20px auto; max-width: 1000px; }
+        .slide.active { display: block; }
+        .icon-huge { font-size: 3rem; color: #5f27cd; margin-bottom: 15px; }
+        .teoria-box { background-color: #f8f9fa; border-left: 5px solid #5f27cd; padding: 25px; text-align: left; margin-bottom: 20px; font-size: 1.1rem; border-radius: 0 10px 10px 0;}
+        .ejemplo-box { background-color: #e0f2fe; border-left: 5px solid #0284c7; padding: 20px; text-align: left; margin-bottom: 20px; font-style: italic;}
+        .actividad-box { border: 2px dashed #5f27cd; padding: 25px; border-radius: 10px; text-align: left; background-color: #faf5ff;}
+        .opcion-btn { display: block; width: 100%; text-align: left; margin-bottom: 10px; padding: 15px; border-radius: 8px; border: 1px solid #ced4da; background-color: white; transition: all 0.2s; white-space: normal; height: auto;}
+        .opcion-btn:hover { background-color: #f3f0ff; border-color: #5f27cd; transform: translateX(5px); }
+        .btn-interactivo { font-weight: bold; padding: 12px 24px; border-radius: 50px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container text-center mt-4">
+    
+    <!-- SLIDE 0: Título -->
+    <div class="slide animate__animated animate__fadeIn active" id="slide-0">
+        <i class="fas fa-chart-area icon-huge"></i>
+        <h1 style="color: #5f27cd;">Introducción a Jamovi</h1>
+        <h3 class="text-secondary">Instituto Artemisa - Escuela de Enfermería</h3>
+        <p class="lead mt-3">Unidad 6: Herramientas estadísticas básicas y traducción institucional[cite: 3].</p>
+        <button class="btn btn-interactivo text-white btn-lg mt-3" style="background-color: #5f27cd;" onclick="changeSlide(1)">Comenzar Guía</button>
+    </div>
+
+    <!-- SLIDE 1: ¿Qué es Jamovi? -->
+    <div class="slide animate__animated" id="slide-1">
+        <h2 style="color: #5f27cd;">1. El puente entre Excel y la Estadística</h2>
+        
+        <div class="teoria-box">
+            <h5 style="color: #5f27cd;"><i class="fas fa-database"></i> Teoría Institucional</h5>
+            <p><strong>Jamovi</strong> es un software estadístico accesible y gratuito[cite: 3]. A diferencia de Excel (que sirve para organizar y filtrar), Jamovi está diseñado para calcular rápidamente porcentajes, frecuencias y promedios con solo un par de clics[cite: 3].</p>
+            <p>Jamovi no necesita formatos estéticos. Para que funcione, debemos darle nuestra base de datos limpia guardada en formato <strong>CSV (Valores separados por comas)</strong>, que es el idioma universal de los datos.</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-random"></i> En el Mundo Real:</strong> Tienes una base de 5.000 pacientes. Contar a mano en Excel cuántos hombres y mujeres hay te llevaría horas y podrías equivocarte. Al importar el archivo CSV a Jamovi, el programa te da el porcentaje exacto de toda la base en menos de un segundo.
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Punto de Control: Formatos</h5>
+            <p>Acabas de terminar de armar tu base en Excel. Le pusiste colores a las celdas, letras en negrita y guardaste el archivo normal (.xlsx). Cuando intentas abrirlo en Jamovi, el programa te da un error. ¿Por qué?[cite: 2]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(1, 1)">A) Porque Jamovi solo lee archivos exportados como CSV (texto crudo), ya que los formatos estéticos de Excel confunden al software estadístico[cite: 2].</button>
+            <button class="opcion-btn" onclick="evaluar(1, 2)">B) Porque la computadora no tiene internet.</button>
+            <button class="opcion-btn" onclick="evaluar(1, 3)">C) Porque me olvidé de ponerle más colores a la tabla.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: La Interfaz de Jamovi -->
+    <div class="slide animate__animated" id="slide-2">
+        <h2 style="color: #5f27cd;">2. ¿Cómo funciona? La regla de los 3 clics</h2>
+        
+        <div class="teoria-box">
+            <h5 style="color: #5f27cd;"><i class="fas fa-mouse-pointer"></i> Teoría Institucional</h5>
+            <p>La interfaz de Jamovi es muy sencilla. Se divide en dos partes: a la izquierda configuras lo que quieres buscar, y a la derecha aparece el resultado instantáneamente.</p>
+            <ul>
+                <li><strong>Para Promedios (Ej. Edad):</strong> Clic en <em>Exploration > Descriptives</em>. Arrastra la variable "Edad" a la caja. A la derecha aparecerá la <strong>"Mean"</strong> (Media o Promedio).</li>
+                <li><strong>Para Porcentajes (Ej. Sexo):</strong> Arrastra la variable "Sexo" y marca la casilla que dice <strong>"Frequency tables"</strong> (Tablas de frecuencia)[cite: 3].</li>
+            </ul>
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Punto de Control: Procedimiento</h5>
+            <p>La Directora te pide urgente saber qué porcentaje exacto de los pacientes de urgencias ingresaron por "Asma". En Jamovi, ¿qué herramienta utilizas?[cite: 3]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(2, 1)">A) Busco la "Mean" (Media) de la variable Asma.</button>
+            <button class="opcion-btn" onclick="evaluar(2, 2)">B) Arrastro la variable Patología y activo las "Frequency tables" (Tablas de frecuencia) para ver el porcentaje exacto de cada enfermedad[cite: 3].</button>
+            <button class="opcion-btn" onclick="evaluar(2, 3)">C) Utilizo la Inteligencia Artificial para que adivine el número.</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Traducción Institucional -->
+    <div class="slide animate__animated" id="slide-3">
+        <h2 style="color: #5f27cd;">3. La Traducción Institucional</h2>
+        
+        <div class="teoria-box">
+            <h5 style="color: #5f27cd;"><i class="fas fa-language"></i> Teoría Institucional</h5>
+            <p>El error más grave de un Auxiliar es creer que su trabajo termina cuando el programa arroja el resultado. <strong>La salida estadística no habla sola; necesita interpretación humana</strong>[cite: 2].</p>
+            <p>Pegar un recorte de pantalla de Jamovi en tu informe de Word es un error de formato técnico. Debes <em>traducir</em> el número crudo a una frase redactada formalmente que la Dirección Médica pueda comprender y usar[cite: 2].</p>
+        </div>
+
+        <div class="ejemplo-box">
+            <strong><i class="fas fa-user-md"></i> En el Mundo Real:</strong> 
+            <br><em>Resultado de Jamovi:</em> Variable = Edad | N = 120 | Mean = 42.5
+            <br><em>Mala redacción:</em> "En Jamovi dio Mean 42.5".
+            <br><em>Redacción Técnica AESRM:</em> "El promedio de edad de los 120 usuarios atendidos en el servicio es de 42,5 años."
+        </div>
+        
+        <div class="actividad-box">
+            <h5 class="text-dark"><i class="fas fa-tasks"></i> Punto de Control: El Informe Ejecutivo</h5>
+            <p>Jamovi arroja la siguiente tabla de frecuencias para la campaña de vacunación: <em>Vacunados = 80 (80%) | No Vacunados = 20 (20%)</em>. ¿Cómo presentas esto en tu informe final de Word?[cite: 2, 3]</p>
+            
+            <button class="opcion-btn" onclick="evaluar(3, 1)">A) Pego la tabla tal cual sale del programa, sin escribir nada más, porque los números se explican solos.</button>
+            <button class="opcion-btn" onclick="evaluar(3, 2)">B) Redacto: "El análisis de la población indica que el 80% de los usuarios cuenta con la vacunación al día, restando un 20% como población de riesgo a captar"[cite: 2].</button>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="mt-4 pb-5">
+        <button class="btn btn-secondary btn-interactivo" id="btn-prev" onclick="changeSlide(-1)"><i class="fas fa-arrow-left"></i> Anterior</button>
+        <span class="mx-4 fw-bold text-secondary fs-5" id="progress">1 / 3</span>
+        <button class="btn btn-secondary btn-interactivo" id="btn-next" onclick="changeSlide(1)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let current = 0; const total = 3;
+    function changeSlide(dir) {
+        document.getElementById(`slide-${current}`).classList.remove('active', 'animate__fadeInRight', 'animate__fadeInLeft');
+        current += dir;
+        if(current < 0) current = 0; if(current >= total) current = total - 1;
+        const anim = dir > 0 ? 'animate__fadeInRight' : 'animate__fadeInLeft';
+        document.getElementById(`slide-${current}`).classList.add('active', anim);
+        document.getElementById('progress').innerText = `${current + 1} / ${total}`;
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = current === total - 1;
+    }
+
+    function evaluar(ejercicio, opcion) {
+        let titulo, texto, icono;
+        if (ejercicio === 1) {
+            if (opcion === 1) { titulo = '¡Concepto Técnico Excelente!'; texto = 'Exacto. El formato CSV es texto crudo. Almacena los datos limpios y sin colores, lo que permite que programas como Jamovi o GeoSalud los lean sin errores[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Error de Exportación'; texto = 'Recuerda que los formatos estéticos (colores, negritas) son para humanos. Los programas estadísticos necesitan los datos puros en formato CSV[cite: 2].'; icono = 'error'; }
+        }
+        else if (ejercicio === 2) {
+            if (opcion === 2) { titulo = '¡Perfecto!'; texto = 'Las tablas de frecuencia sirven exactamente para eso: cuentan cuántas veces se repite una categoría (ej. Asma) y te dan el porcentaje automáticamente[cite: 3].'; icono = 'success'; } 
+            else { titulo = 'Cuidado'; texto = 'La "Mean" (Media/Promedio) se usa para números continuos (como la edad o el peso). Para categorías (nombres de enfermedades o sexo), usamos Frecuencias[cite: 3].'; icono = 'warning'; }
+        }
+        else if (ejercicio === 3) {
+            if (opcion === 2) { titulo = '¡AESRM Profesional!'; texto = 'Ese es tu verdadero rol. Tomas la salida matemática del software y le aportas interpretación humana y redacción institucional para que la Dirección tome decisiones[cite: 2].'; icono = 'success'; } 
+            else { titulo = 'Trabajo Incompleto'; texto = 'La salida estadística nunca habla sola[cite: 2]. Si solo pegas números brutos, estás delegando tu trabajo analítico a la máquina.'; icono = 'error'; }
+        }
+        Swal.fire({ title: titulo, html: texto, icon: icono, confirmButtonColor: '#5f27cd' });
+    }
+    document.getElementById('btn-prev').disabled = true;
+</script>
+</body>
+</html>
