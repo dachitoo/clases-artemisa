@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidad Digital y Seguridad</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .guide-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; margin: 30px auto; max-width: 800px; }
+        .step-box { border-left: 5px solid #2c3e50; padding: 20px; background-color: #e9ecef; margin-bottom: 20px; border-radius: 0 10px 10px 0; }
+        .step-title { color: #2c3e50; font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; }
+        .security-box { border-left: 5px solid #e74c3c; padding: 20px; background-color: #fdf2f2; margin-bottom: 20px; border-radius: 0 10px 10px 0; }
+        .btn-action { background-color: #18bc9c; color: white; font-weight: bold; border-radius: 50px; padding: 10px 25px; border: none; transition: 0.3s; }
+        .btn-action:hover { background-color: #128f76; transform: translateY(-2px); color: white;}
+    </style>
+</head>
+<body>
+
+<div class="container text-center animate__animated animate__fadeIn">
+    <div class="guide-container text-start">
+        <div class="text-center mb-4">
+            <i class="fas fa-id-card fa-4x text-primary mb-3"></i>
+            <h2>Tu Identidad Digital Profesional</h2>
+            <p class="text-secondary">Instituto Artemisa - Curso AESRM</p>
+            <hr>
+        </div>
+
+        <p class="lead">El correo electrónico no es solo para enviar mensajes; es tu llave de acceso al entorno digital de salud, a la nube y a tus herramientas de trabajo. Sigue estos pasos para crear tu usuario profesional.</p>
+
+        <!-- PASO 1 -->
+        <div class="step-box">
+            <div class="step-title"><i class="fas fa-at"></i> Paso 1: La Nomenclatura Profesional</div>
+            <p>Un correo para trabajar en salud debe ser sobrio y técnico. No utilices apodos. Construye tu dirección utilizando este formato obligatorio para el curso:</p>
+            <ul class="fs-5">
+                <li><strong>nombre.apellido.aesrm@gmail.com</strong></li>
+                <li><em>Ejemplo:</em> ana.gomez.aesrm@gmail.com</li>
+            </ul>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="step-box">
+            <div class="step-title"><i class="fas fa-mouse-pointer"></i> Paso 2: Crear la Cuenta</div>
+            <p>Ingresa a Gmail y selecciona "Crear cuenta para uso personal". Completa tus datos reales y utiliza la nomenclatura que definiste en el Paso 1.</p>
+            <div class="text-center mt-3">
+                <a href="https://accounts.google.com/signup" target="_blank" class="btn btn-action"><i class="fab fa-google"></i> Ir a crear mi correo</a>
+            </div>
+        </div>
+
+        <!-- PASO 3 (CIBERSEGURIDAD) -->
+        <div class="security-box">
+            <div class="step-title text-danger"><i class="fas fa-user-shield"></i> Paso 3: Ciberseguridad y Contraseña</div>
+            <p>La seguridad de la información protege los datos frente a accesos indebidos[cite: 2]. Tu contraseña es tu firma legal. Si alguien hace un mal registro médico desde tu cuenta, la <strong>trazabilidad</strong> del sistema te señalará a ti como responsable[cite: 2].</p>
+            <ul>
+                <li>Nunca uses contraseñas obvias (ej. "123456" o tu fecha de nacimiento).</li>
+                <li>Anota tu contraseña en tu cuaderno físico ahora mismo. No confíes solo en tu memoria.</li>
+                <li><strong>Prohibición absoluta:</strong> Los protocolos institucionales prohíben compartir contraseñas con compañeros, sin importar la urgencia[cite: 2].</li>
+            </ul>
+        </div>
+
+        <!-- TEST INTERACTIVO -->
+        <div class="text-center mt-5">
+            <h4>Punto de Control: Ciberseguridad</h4>
+            <p>Demuestra que entendiste el protocolo antes de enviar tu primer correo.</p>
+            <button class="btn btn-dark btn-lg rounded-pill px-4" onclick="testSeguridad()">Realizar Test de Seguridad</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function testSeguridad() {
+        Swal.fire({
+            title: 'Situación de Guardia',
+            text: 'Un médico te pide tu nueva contraseña del correo para descargar un resultado de laboratorio urgente porque su computadora se colgó. ¿Qué haces?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Le dicto la contraseña',
+            cancelButtonText: 'Ingreso yo mismo',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#28a745',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) { 
+                Swal.fire('¡Criterio Institucional Impecable!', 'Proteger la confidencialidad es tu deber ético. Al ingresar tú mismo, proteges tus datos y garantizas la trazabilidad del sistema[cite: 2]. ¡Ya puedes enviar tu primer correo formal al docente!', 'success'); 
+            } else if (result.isConfirmed) { 
+                Swal.fire('Error Crítico de Seguridad', 'Acabas de vulnerar la confidencialidad. Compartir credenciales rompe los protocolos institucionales de seguridad informática en salud[cite: 2]. Inténtalo de nuevo.', 'error'); 
+            }
+        });
+    }
+</script>
+</body>
+</html>
